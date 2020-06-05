@@ -1,15 +1,18 @@
 import pandas as pd
 DATAFRAME = pd.read_csv("tags.csv", usecols=["movieId", "tag"], sep=",")
-print(DATAFRAME)
+# print(DATAFRAME)
 
 DATAFRAME_MOVIES = pd.read_csv("movies.csv", usecols=["movieId", "title"], sep=",")
-print(DATAFRAME_MOVIES)
+# print(DATAFRAME_MOVIES)
 
-username = input("\nNome de Usuário:")
-idFilme = int(input("ID do Filme:"))
+print("Sistema de Recomendação")
 
-tags   = []
-filmes = []
+username = input("Nome de Usuário:")
+idFilme  = int(input("ID do Filme:"))
+
+tags               = []
+filmes             = []
+filmesRecomendados = []
 
 filme = DATAFRAME["movieId"].values
 tag   = DATAFRAME["tag"].values
@@ -27,8 +30,6 @@ for j in range(len(DATAFRAME["tag"].values)):
 filmesId       = DATAFRAME_MOVIES["movieId"].values
 filmesNome     = DATAFRAME_MOVIES["title"].values
 filmeEscolhido = ""
-
-filmesRecomendados = []
 
 for k in range(len(DATAFRAME_MOVIES["title"].values)):
     if filmesId[k] == idFilme:
