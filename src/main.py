@@ -1,9 +1,9 @@
 import pandas as pd
-DATAFRAME = pd.read_csv("tags.csv", usecols=["movieId", "tag"], sep=",")
-# print(DATAFRAME)
+dfTAGS = pd.read_csv("tags.csv", usecols=["movieId", "tag"], sep=",")
+# print(dfTAGS)
 
-DATAFRAME_MOVIES = pd.read_csv("movies.csv", usecols=["movieId", "title"], sep=",")
-# print(DATAFRAME_MOVIES)
+dfMOVIES = pd.read_csv("movies.csv", usecols=["movieId", "title"], sep=",")
+# print(dfMOVIES)
 
 print("Sistema de Recomendação")
 
@@ -14,29 +14,29 @@ tags               = []
 filmes             = []
 filmesRecomendados = []
 
-filme = DATAFRAME["movieId"].values
-tag   = DATAFRAME["tag"].values
+filme = dfTAGS["movieId"].values
+tag   = dfTAGS["tag"].values
 
-for i in range(len(DATAFRAME["movieId"].values)):
+for i in range(len(dfTAGS["movieId"].values)):
     if idFilme == filme[i]:
         if tag[i] not in tags:
             tags.append(tag[i].lower())
 
-for j in range(len(DATAFRAME["tag"].values)):
+for j in range(len(dfTAGS["tag"].values)):
     if tag[j].lower() in tags:
         if filme[j] not in filmes:
             filmes.append(filme[j])
 
-filmesId       = DATAFRAME_MOVIES["movieId"].values
-filmesNome     = DATAFRAME_MOVIES["title"].values
+filmesId       = dfMOVIES["movieId"].values
+filmesNome     = dfMOVIES["title"].values
 filmeEscolhido = ""
 
-for k in range(len(DATAFRAME_MOVIES["title"].values)):
+for k in range(len(dfMOVIES["title"].values)):
     if filmesId[k] == idFilme:
         filmeEscolhido = filmesNome[k]
 
 for l in range(len(filmes)):
-    for m in range(len(DATAFRAME_MOVIES["title"].values)):
+    for m in range(len(dfMOVIES["title"].values)):
         if filmes[l] == filmesId[m]:
             filmesRecomendados.append(filmesNome[m])
 
