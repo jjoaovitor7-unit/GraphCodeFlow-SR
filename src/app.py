@@ -2,6 +2,7 @@
 #-*- coding: utf-8 -*-
 
 import tkinter as tk
+from tkinter.ttk import Combobox as CB
 
 __version__ = "1.0"
 
@@ -13,11 +14,15 @@ def main(self):
 
     lUsername = tk.Label(self, text="Nome de Usuário:")
     eUsername = tk.Entry(self)
+
     lFilme = tk.Label(self, text="Filme:                   ")
     eFilme = tk.Entry(self)
 
     lUsername.grid(row=0, column=0)
     eUsername.grid(row=0, column=1)
+
+    lFilme.grid(row=1, column=0)
+    eFilme.grid(row=1, column=1)
 
 
     def show_profile():
@@ -58,8 +63,8 @@ def main(self):
         lFilmeNome = tk.Label(wProfile, text="Nome do Filme: "
                               + str(filmeEscolhido)).grid(row=2, column=0, sticky=tk.W)
 
-        lTags      = tk.Label(wProfile, text="Tags: "
-                              + str(tags)).grid(row=3, column=0, sticky=tk.W)
+        lTags      = tk.Label(wProfile, text="Tags: ").grid(row=3, column=0, sticky=tk.W)
+        cbTags     = CB(wProfile, width=30, values=tags).grid(row=3, column=1)
 
         filmesRecomendados = []
         for l in range(len(filmes)):
@@ -67,15 +72,13 @@ def main(self):
                 if filmes[l] == filmesId[m]:
                     filmesRecomendados.append(filmesNome[m])
 
-        lFilmesIDRecomendados = tk.Label(wProfile, text="ID de Filmes Recomendados: "
-                                         + str(filmes)).grid(row=4, column=0, sticky=tk.W)
-        lFilmesRecomendados   = tk.Label(wProfile, text="Filmes Recomendados: "
-                                       + str(filmesRecomendados)).grid(row=5, column=0)
+        lFilmesIDRecomendados  = tk.Label(wProfile, text="ID de Filmes Recomendados: ").grid(row=4, column=0, sticky=tk.W)
+        cbFilmesIDRecomendados = CB(wProfile, width=30, values=filmes).grid(row=4, column=1)
+
+        lFilmesRecomendados    = tk.Label(wProfile, text="Filmes Recomendados: ").grid(row=5, column=0, sticky=tk.W)
+        cbFilmesRecomendados   = CB(wProfile, width=30, values=filmesRecomendados).grid(row=5, column=1)
 
         wProfile.mainloop()
-
-    lFilme.grid(row=1, column=0)
-    eFilme.grid(row=1, column=1)
 
     bEnviar = tk.Button(self, text="Enviar", command=show_profile)
     bEnviar.grid(row=2, column=0)
