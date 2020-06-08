@@ -31,12 +31,12 @@ filmesId       = dfMOVIES["movieId"].values
 filmesNome     = dfMOVIES["title"].values
 filmeEscolhido = ""
 
-for k in range(len(dfMOVIES["title"].values)):
+for k in range(len(filmesId)):
     if filmesId[k] == idFilme:
         filmeEscolhido = filmesNome[k]
 
 for l in range(len(filmes)):
-    for m in range(len(dfMOVIES["title"].values)):
+    for m in range(len(filmesNome)):
         if filmes[l] == filmesId[m]:
             filmesRecomendados.append(filmesNome[m])
 
