@@ -35,7 +35,7 @@ for k in range(len(filmesId)):
     if filmesId[k] == idFilme:
         filmeEscolhido = filmesNome[k]
 
-for l in range(len(filmesNome)):
+for l in range(len(filmes)):
     for m in range(len(filmesNome)):
         if filmes[l] == filmesId[m]:
             filmesRecomendados.append(filmesNome[m])
