@@ -14,18 +14,18 @@ tags               = []
 filmes             = []
 filmesRecomendados = []
 
-filme = dfTAGS["movieId"].values
-tag   = dfTAGS["tag"].values
+filmesCol = dfTAGS["movieId"].values
+tagsCol   = dfTAGS["tag"].values
 
-for i in range(len(dfTAGS["movieId"].values)):
-    if idFilme == filme[i]:
-        if tag[i] not in tags:
-            tags.append(tag[i].lower())
+for i in range(len(filmesCol)):
+    if idFilme == filmesCol[i]:
+        if tagsCol[i] not in tags:
+            tags.append(tagsCol[i].lower())
 
-for j in range(len(dfTAGS["tag"].values)):
-    if tag[j].lower() in tags:
-        if filme[j] not in filmes:
-            filmes.append(filme[j])
+for j in range(len(tagsCol)):
+    if tagsCol[j].lower() in tags:
+        if filmesCol[j] not in filmes:
+            filmes.append(filmesCol[j])
 
 filmesId       = dfMOVIES["movieId"].values
 filmesNome     = dfMOVIES["title"].values
