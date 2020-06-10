@@ -42,7 +42,11 @@ for l in range(len(filmes)):
 
 print("\nUsuário:", username
       + "\nFilme:", "[" + str(idFilme) + "]", filmeEscolhido)
-print("Tags:", str(tags).strip("[]")
-      + "\nFilmes Recomendados:\n",
-      str(filmes)+"\n"+
-      str(filmesRecomendados).strip("[]"))
+
+print("Tags:")
+for n in range(len(tags)):
+    print(tags[n], end=" ")
+
+print("\nFilmes Recomendados:")
+for o in range(len(filmes)):
+    print("[" + str(filmes[o]) + "] " + filmesRecomendados[o])
