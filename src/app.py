@@ -54,16 +54,17 @@ def main(self):
             if int(filmesId[k]) == int(vFilmeID):
                 filmeEscolhido = filmesNome[k]
 
-        lUsernameProfile = tk.Label(wProfile, text="Nome de usuário: "
-                                    + vUsername).grid(row=0, column=0, sticky=tk.W)
+        lUsernameProfile = tk.Label(wProfile, text="Nome de usuário: " + vUsername)
+        lUsernameProfile.grid(row=0, column=0, sticky=tk.W)
 
-        lFilmeID   = tk.Label(wProfile, text="ID do Filme: "
-                              + str(vFilmeID)).grid(row=1, column=0, sticky=tk.W)
+        lFilmeID   = tk.Label(wProfile, text="ID do Filme: " + str(vFilmeID))
+        lFilmeID.grid(row=1, column=0, sticky=tk.W)
 
-        lFilmeNome = tk.Label(wProfile, text="Nome do Filme: "
-                              + str(filmeEscolhido)).grid(row=2, column=0, sticky=tk.W)
+        lFilmeNome = tk.Label(wProfile, text="Nome do Filme: " + filmeEscolhido)
+        lFilmeNome.grid(row=2, column=0, sticky=tk.W)
 
-        lTags      = tk.Label(wProfile, text="Tags: ").grid(row=3, column=0, sticky=tk.W)
+        lTags      = tk.Label(wProfile, text="Tags:")
+        lTags.grid(row=3, column=0, sticky=tk.W)
         cbTags     = CB(wProfile, width=30, values=tags).grid(row=3, column=1)
 
         filmesRecomendados = []
@@ -72,10 +73,12 @@ def main(self):
                 if filmes[l] == filmesId[m]:
                     filmesRecomendados.append(filmesNome[m])
 
-        lFilmesIDRecomendados  = tk.Label(wProfile, text="ID de Filmes Recomendados: ").grid(row=4, column=0, sticky=tk.W)
+        lFilmesIDRecomendados  = tk.Label(wProfile, text="ID de Filmes Recomendados:")
+        lFilmesIDRecomendados.grid(row=4, column=0, sticky=tk.W)
         cbFilmesIDRecomendados = CB(wProfile, width=30, values=filmes).grid(row=4, column=1)
 
-        lFilmesRecomendados    = tk.Label(wProfile, text="Filmes Recomendados: ").grid(row=5, column=0, sticky=tk.W)
+        lFilmesRecomendados    = tk.Label(wProfile, text="Filmes Recomendados:")
+        lFilmesRecomendados.grid(row=5, column=0, sticky=tk.W)
         cbFilmesRecomendados   = CB(wProfile, width=30, values=filmesRecomendados).grid(row=5, column=1)
 
         wProfile.mainloop()
