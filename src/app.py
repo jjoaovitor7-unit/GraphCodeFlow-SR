@@ -9,7 +9,7 @@ __version__ = "1.0"
 
 def main(self):
     import pandas as pd
-    dfTAGS = pd.read_csv("tags.csv", usecols=["movieId", "tag"], sep=",")
+    dfTAGS   = pd.read_csv("tags.csv", usecols=["movieId", "tag"], sep=",")
     dfMOVIES = pd.read_csv("movies.csv", usecols=["movieId", "title"], sep=",")
 
     lUsername = tk.Label(self, text="Nome de Usuário:")
@@ -27,24 +27,25 @@ def main(self):
 
     def show_profile():
         wProfile = tk.Toplevel()
+
         vUsername = eUsername.get()
-        vFilmeID = eFilme.get()
+        vFilmeID  = eFilme.get()
 
         tags   = []
         filmes = []
 
-        filme = dfTAGS["movieId"].values
-        tag   = dfTAGS["tag"].values
+        filmesCol = dfTAGS["movieId"].values
+        tagsCol   = dfTAGS["tag"].values
 
-        for i in range(len(filme)):
-            if int(vFilmeID) == int(filme[i]):
-                if tag[i] not in tags:
-                    tags.append(tag[i].lower())
+        for i in range(len(filmesCol)):
+            if int(vFilmeID) == int(filmesCol[i]):
+                if tagsCol[i] not in tags:
+                    tags.append(tagsCol[i].lower())
 
-        for j in range(len(tag)):
-            if tag[j].lower() in tags:
-                if filme[j] not in filmes:
-                    filmes.append(filme[j])
+        for j in range(len(tagsCol)):
+            if tagsCol[j].lower() in tags:
+                if filmesCol[j] not in filmes:
+                    filmes.append(filmesCol[j])
 
         filmesId       = dfMOVIES["movieId"].values
         filmesNome     = dfMOVIES["title"].values
@@ -75,11 +76,13 @@ def main(self):
 
         lFilmesIDRecomendados  = tk.Label(wProfile, text="ID de Filmes Recomendados:")
         lFilmesIDRecomendados.grid(row=4, column=0, sticky=tk.W)
-        cbFilmesIDRecomendados = CB(wProfile, width=30, values=filmes).grid(row=4, column=1)
+        cbFilmesIDRecomendados = CB(wProfile, width=30, values=filmes)
+        cbFilmesIDRecomendados.grid(row=4, column=1)
 
         lFilmesRecomendados    = tk.Label(wProfile, text="Filmes Recomendados:")
         lFilmesRecomendados.grid(row=5, column=0, sticky=tk.W)
-        cbFilmesRecomendados   = CB(wProfile, width=30, values=filmesRecomendados).grid(row=5, column=1)
+        cbFilmesRecomendados   = CB(wProfile, width=30, values=filmesRecomendados)
+        cbFilmesRecomendados.grid(row=5, column=1)
 
         wProfile.mainloop()
 
